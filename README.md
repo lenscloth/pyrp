@@ -1,3 +1,8 @@
+Introduction
+============
+Randomized Prim Algorithm for Object Proposals on Python3
+Forked form https://github.com/prlz77/pyrp
+
 pyrp
 ====
 
@@ -7,7 +12,13 @@ Visit: https://github.com/smanenfr/rp to get the original code.
 
 Set-Up
 ======
-Copy the wrapper files into their respective folders of the original code and execute make.
+You can change configuration by changing the value at config.py
+
+
+
+```
+make
+```
 
 Hints
 =====
