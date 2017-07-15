@@ -48,12 +48,12 @@ if __name__ == '__main__':
                 np.save(save_path, boxes)
             elif save_path.split(".")[-1] == "mat":
                 import scipy.io as scio
-                print save_path
+                print(save_path)
                 scio.savemat(save_path, {'boxes': boxes})
         else:
-            print boxes
+            print(boxes)
 
     except Exception as e:
-        print e.message
-        print "Usage:"
-        print "python demo.py [image=image_path] [savefile=(save_file.npy | save_file.mat)]"
+        print(e)
+        print("Usage:")
+        print("python demo.py [image=image_path] [savefile=(save_file.npy | save_file.mat)]")

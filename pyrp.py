@@ -88,7 +88,7 @@ class RP:
         self.rp.deallocate.argtypes = [ct.POINTER(ct.c_double)]
 
     def loadParamsFromNumpy(self, npyFile):
-        self.params = np.load(npyFile).item()
+        self.params = np.load(npyFile, encoding="latin1").item()
         self.params['colorspace'] = self.colorDic[self.params['colorspace']]
 
     def getProposals(self, img, params=None):
@@ -169,13 +169,13 @@ class RP:
         unique_boxes = None
         npyVersion = np.__version__.split(".")
 
-        if npyVersion[0] >= 1 and npyVersion[1] >= 7:
+        if float(npyVersion[0]) >= 1 and float(npyVersion[1]) >= 7:
             b = np.ascontiguousarray(qBoxes).view(np.dtype((np.void, qBoxes.dtype.itemsize * qBoxes.shape[1])))
             _, idx = np.unique(b, return_index=True)
             unique_boxes = boxes[idx]
         else:
-            print "Warning: Using slow version of unique."
-            print "Install numpy 1.7+ to improve performance."
+            print("Warning: Using slow version of unique.")
+            print("Install numpy 1.7+ to improve performance.")
             seen_boxes = []
             unique_boxes = []
             for index, box in enumerate(qBoxes):
