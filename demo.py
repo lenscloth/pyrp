@@ -2,18 +2,12 @@ import scipy.ndimage as nd
 from pyrp import RP
 import sys
 
-DEMO_PARAMS = './rp.npy'
-
-
 def demo(path='./test_images/000013.jpg'):
      # Load image
     img = nd.imread(path)
 
     # Instantiate rp wrapper class
     rp = RP()
-
-    # Load demo parameters
-    rp.loadParamsFromNumpy(DEMO_PARAMS)
 
     # Get the boxes
     boxes = rp.getProposals(img)

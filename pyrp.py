@@ -79,7 +79,9 @@ class RP:
         self.colorDic = {"RGB": 1, "rg": 2, "LAB": 3, "Opponent": 4, "HSV": 5}
 
         # Loading of the C++ library with ctypes
-        self.rp = ct.cdll.LoadLibrary(os.path.join(os.getcwd(), "rp.so"))
+        package_path = os.path.dirname(__file__)
+
+        self.rp = ct.cdll.LoadLibrary(os.path.join(package_path, "rp.so"))
         self.rp.pyRP.restype = Proposals
         self.rp.deallocate.restype = None
         self.rp.pyRP.argtypes = [ct.POINTER(PyImage), SpParams, FWeights,
@@ -87,8 +89,7 @@ class RP:
                                  ct.c_int32, ct.c_bool]
         self.rp.deallocate.argtypes = [ct.POINTER(ct.c_double)]
 
-    def loadParamsFromNumpy(self, npyFile):
-        self.params = np.load(npyFile, encoding="latin1").item()
+        self.params = np.load(os.path.join(package_path, "rp.npy"), encoding="latin1").item()
         self.params['colorspace'] = self.colorDic[self.params['colorspace']]
 
     def getProposals(self, img, params=None):
