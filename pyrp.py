@@ -150,7 +150,7 @@ class RP:
                                 self.params['colorspace'],
                                 ct.byref(alpha),
                                 self.params['rSeedForRun'],
-                                True))
+                                self.params['verbose']))
 
         # Access the pointer to the array of boxes to get results:
         nProposals = proposals[0].nProposals
