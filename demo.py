@@ -1,6 +1,9 @@
-import scipy.ndimage as nd
-from pyrp import RP
 import sys
+
+import scipy.ndimage as nd
+
+from rp.pyrp import RP
+
 
 def demo(path='./test_images/000013.jpg'):
      # Load image

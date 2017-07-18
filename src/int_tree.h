@@ -158,7 +158,7 @@ void IntTree::RemoveNode(const uint i, const uint j){
     newW = 0;
   }
 
-  x_.at(k)=Node(0,-1,-1,newW,std::vector<double>::iterator(NULL));
+  x_.at(k)=Node(0,-1,-1,newW,std::vector<double>::iterator());
 
   nActiveNodes_-=1;
 

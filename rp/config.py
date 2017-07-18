@@ -1,4 +1,5 @@
 import numpy as np
+import os
 
 params = {}
 # Parameter specification:
@@ -19,7 +20,7 @@ params['superpixels']['min_size'] = 100
 params['simWeights'] = {}
 params['simWeights']['wLABColorHist'] = -2.6864
 params['simWeights']['wBias'] = 3.0017
-params['simWeights']['wCommonBorder'] =  -1.0029
+params['simWeights']['wCommonBorder'] = -1.0029
 params['simWeights']['wSizePer'] = -2.3655
 
 # Size term alpha, as explained in the paper sec. 4.2.
@@ -29,9 +30,9 @@ params['simWeights']['wSizePer'] = -2.3655
 # S. Manen, M. Guillaumin, and L. Van Gool.
 # Prime Object Proposals with Randomized Prim's Algorithm. In ICCV, 2013.
 
-params['alpha'] = np.load('./data/alpha_voc07.npy');
-params['verbose'] = False; # Set to true to display more information during execution
+package_path = os.path.dirname(__file__)
+params['alpha'] = np.load(os.path.join(package_path,'./data/alpha_voc07.npy'))
+params['verbose'] = False # Set to true to display more information during execution
 
-if __name__ == "__main__":
-    np.save('./rp.npy', params)
-    
+def get_params():
+    return params

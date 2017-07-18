@@ -9,6 +9,7 @@ import ctypes as ct
 import numpy as np
 import os
 
+from rp.config import get_params
 
 class Alpha(ct.Structure):
     """Ctypes Structure for RP alpha parameter.
@@ -89,7 +90,7 @@ class RP:
                                  ct.c_int32, ct.c_bool]
         self.rp.deallocate.argtypes = [ct.POINTER(ct.c_double)]
 
-        self.params = np.load(os.path.join(package_path, "rp.npy"), encoding="latin1").item()
+        self.params = get_params()
         self.params['colorspace'] = self.colorDic[self.params['colorspace']]
 
     def getProposals(self, img, params=None):

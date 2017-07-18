@@ -94,7 +94,7 @@ std::vector<BBox> RP(const Image& rgbI, const Params& params){
       double e=neighs.at(n).second;
       uint i=MAX(neighs.at(n).first,nextSp);
       uint j=MIN(neighs.at(n).first,nextSp);
-      ns.push_back(IntTree::Node(e,i,j,std::vector<double>::iterator(NULL)));
+      ns.push_back(IntTree::Node(e,i,j,std::vector<double>::iterator()));
       T.AddNode(ns.back());
     }
 
@@ -154,7 +154,7 @@ std::vector<BBox> RP(const Image& rgbI, const Params& params){
             assert(T.AreWConsistent());
           }else{
             assert(n < N.size());
-            T.AddNode(IntTree::Node(N.at(n).second,MAX(nextSp,j),MIN(nextSp,j),std::vector<double>::iterator(NULL)));
+            T.AddNode(IntTree::Node(N.at(n).second,MAX(nextSp,j),MIN(nextSp,j),std::vector<double>::iterator()));
             assert(T.AreWConsistent());
           }
         }

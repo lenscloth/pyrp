@@ -4,7 +4,7 @@ CXX = g++ # C++ compiler
 CXXFLAGS = -fPIC -O3 -g -DNDEBUG # C flags
 LDFLAGS = -shared  # linking flags
 RM = rm -f  # rm command
-TARGET_LIB = rp.so # target lib
+TARGET_LIB = rp/rp.so # target lib
 DEPENDENCES = src/FelzenSegment
 CONSTANTS = 
 
